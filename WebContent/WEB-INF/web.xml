@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+ 
+  <!-- 项目销毁监听器 -->
+  <listener>
+  	<listener-class>cn.cdut.bookcity.listener.CloseDataSourceListener</listener-class>
+  </listener>
+
+  
+  <!-- 编码过滤器 -->
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>cn.cdut.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 用户登录过滤器 -->
+  <filter>
+	<filter-name>LoginFilter</filter-name>
+	<filter-class>cn.cdut.bookcity.filter.LoginFilter</filter-class>  
+  </filter>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/jsps/cart/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<servlet-name>CartServlet</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<url-pattern>/jsps/order/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  	<filter-name>LoginFilter</filter-name>
+  	<servlet-name>OrderServlet</servlet-name>
+  </filter-mapping>
+  
+  <!-- 后台用户登录过滤器 -->
+  <filter>
+  	<filter-name>AdminLoginFilter</filter-name>
+  	<filter-class>cn.cdut.bookcity.background.filter.AdminLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AdminLoginFilter</filter-name>
+  	<url-pattern>/adminjsps/admin/*</url-pattern>
+  	<url-pattern>/background/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <servlet>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <servlet-class>cn.cdut.vcode.servlet.VerifyCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <url-pattern>/VerifyCodeServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UserServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.user.web.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserServlet</servlet-name>
+  	<url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CategoryServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.category.web.servlet.CategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CategoryServlet</servlet-name>
+  	<url-pattern>/CategoryServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BookServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.book.web.servlet.BookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookServlet</servlet-name>
+  	<url-pattern>/BookServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>CartServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.cart.web.servlet.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CartServlet</servlet-name>
+  	<url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>OrderServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.order.web.servlet.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>OrderServlet</servlet-name>
+  	<url-pattern>/OrderServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>AdminServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.background.admin.web.servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AdminServlet</servlet-name>
+  	<url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BgCategoryServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.background.category.web.servlet.BgCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BgCategoryServlet</servlet-name>
+  	<url-pattern>/background/BgCategoryServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>BgBookServlet</servlet-name>
+  	<servlet-class>cn.cdut.bookcity.background.book.web.servlet.BgBookServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BgAddBookServlet</servlet-name>
+    <servlet-class>cn.cdut.bookcity.background.book.web.servlet.BgAddBookServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>cn.cdut.bookcity.junit.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BgOrderServlet</servlet-name>
+    <servlet-class>cn.cdut.bookcity.background.order.web.servlet.BgOrderServlet</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+  	<servlet-name>BgBookServlet</servlet-name>
+  	<url-pattern>/background/BgBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BgAddBookServlet</servlet-name>
+    <url-pattern>/background/BgAddBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BgOrderServlet</servlet-name>
+    <url-pattern>/background/BgOrderServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
